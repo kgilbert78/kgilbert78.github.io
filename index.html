@@ -1,23 +1,217 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Kyle Gilbert</title>
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="normalize.css" />
-	<link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Kyle Gilbert</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css" />
 </head>
+
 <body>
-<!--Source credit to: https://codepen.io/DZuz14/pen/jOPWLgz-->
-<div class="big-image">
-	<div class="overlay">
-		<h1>Kyle Gilbert</h1>
-		<p>Careers in Code Student</p>
-	</div>
-</div>
+    
+    <div class="backgroundImage">
+
+        <div class="accordion" id="collapseWrapper">
+
+            <div class="navbar d-flex justify-content-between p-2">
+
+                <div class="dropdown navLinks">
+                    <a data-bs-toggle="collapse" onmousedown="toggleContent(1)" href="#collapseAbout">
+                        { About }
+                    </a>
+                </div>
+
+                <div class="dropdown navLinks">
+                    <a data-bs-toggle="collapse" onmousedown="toggleContent(2)" href="#collapseProjects">
+                        { Projects }
+                    </a>
+                </div>
+
+                <div class="dropdown navLinks">
+                    <a data-bs-toggle="collapse" onmousedown="toggleContent(3)" href="#collapseContact">
+                        { Contact }
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="overlay">
+                <h1>Kyle Gilbert</h1>
+                <p>Full Stack Web Developer</p>
+
+                <div id="collapsibleContent" class="scroll">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+        </script>
+    <script>
+        const collapsibleContent = document.getElementById("collapsibleContent");
+
+        let contentToDisplay = "";
+
+        const toggleContent = (linkID) => {
+            contentToDisplay = "";
+            // load each section into the first accordion when it's being viewed so they all move in the same direction when they open, and so there's still movement when changing between sections that both use scroll
+            if (linkID === 1) {
+                showAbout();
+            } else if (linkID === 2) {
+                showProjects();
+            } else {
+                showContact();
+            }
+        };
+
+        const showAbout = () => {
+            contentToDisplay = 
+                `<div class="accordion-collapse collapse" id="collapseAbout" data-bs-parent="#collapseWrapper">
+                    <div class="dropdownDetails mx-4">
+                        <div class="text-end">
+                            <a data-bs-toggle="collapse" href="#collapseAbout">Close [ X ]</a>
+                        </div>
+                        <div>
+                            <span class="subtitle">
+                                <p class="subtitle">
+                                    <img class="headshotFormatting" src="kyleGilbert.jpg" />
+                                    I am a recent graduate of Hack Upstate’s <a href="https://careersincode.org/" target="_blank">Careers in Code</a>, where I learned full stack web development. Coding became a passion over the course of this intensive 6 month program. After years of saving the things I’m most enthusiastic about for my spare time, I am so excited to begin my new career and put my passion for coding to work!
+                                </p>
+                                <p>
+                                    I like to understand things in depth, and I am a self motivated learner who will dig until I find solutions to a problem. I often view things from a different perspective than others. This has been an advantage in problem solving throughout my career as an office manager and in every job I have held. In coding I have noticed that I often see relationships or consequences that others don’t see. As a result I am able to anticipate a bug or see a more functional layout. I am also able to keep the end user’s point of view in mind.  I truly value the opportunity to ask questions in order to find the most appropriate solution. My favorite part of coding has been connecting with people over challenging problems and ways to solve them. I’ve never met a more welcoming, supportive, generous group of people than the tech community of Central NY. I feel so lucky to be a part of it.
+                                </p>
+                                <p>
+                                    I have an instinctive ability and proficiency in languages. My lifelong passion for language led me to a Linguistics degree. I am fascinated by word origins, the structure and function of language, the relationships between language, culture and history. I have studied French and German, and dabbled in a number of other languages. I continue to indulge these interests in my reading, and with the wealth of international movies and television shows now available online I am often drawn to apply my linguistic skills to decoding languages I don’t understand when watching. My long-term goal is a career that combines my background in linguistics with coding knowledge.
+                                </p>
+                                <p>
+                                    I am also proud to be a part of ensuring the future health of Cazenovia Lake, having served the Cazenovia Lake Association in a professional capacity since 2008 and as a board member since March 2021. I am looking forward to using my new coding skills to play a broader role in the future of the Association’s work.
+                                </p>
+                                
+                            </span>
+                        </div>
+                        <div class="mt-2" id="appendCloseX">
+                            <a data-bs-toggle="collapse" href="#collapseAbout">(close)</a>
+                        </div>
+                    </div>
+                </div>`
+
+            collapsibleContent.innerHTML = contentToDisplay;
+
+        };
+
+        const showProjects = () => {
+            contentToDisplay = `<div class="accordion-collapse collapse" id="collapseProjects" data-bs-parent="#collapseWrapper">
+                <div class="dropdownDetails mx-4">
+                    <div class="closeWindow text-end">
+                        <a data-bs-toggle="collapse" href="#collapseProjects">Close [ X ]</a>
+                    </div>
+                    <div>
+                        <a href="https://walkumentary-syracuse-frontend.herokuapp.com" target="_blank">
+                            Syracuse Walkumentary
+                        </a>
+                        <br />
+                        <span class="subtitle">
+                            <em>An immersive audio walking tour of Syracuse history.</em>
+                            <br />
+                            My Careers in Code Capstone project, which I built in React with Google Maps API and HTML Audio. It was mobile first design and is responsive. I built the backend in NodeJS with a Postgres SQL database to store data about the stops on the tour.
+                            <br />
+                            See the code on GitHub:&nbsp;
+                            <a 
+                                href="https://github.com/kgilbert78/kyles-capstone-frontend" 
+                                target="_blank"
+                            >
+                               frontend
+                            </a>
+                            &nbsp;|&nbsp;
+                            <a 
+                                href="https://github.com/kgilbert78/kyles-capstone-backend" 
+                                target="_blank"
+                            >
+                                backend
+                            </a>
+                        </span>
+                    </div>
+                    <div class="mt-3">
+                        <a class="title" href="bestsellerlist.html" target="_blank">
+                            Bestseller List - Coming Soon!
+                        </a>
+                        <br />
+                        <span class="subtitle">
+                            This week's New York Times Bestseller List with a reading list where users can save books and mark those they've read. This is a work in progress. It started as a weekend project to display data from the New York Times Bestseller List API and has grown as I learned more. I built the backend in in NodeJS with a Postgres SQL relational database. I'm in the process of adding a login system. I built the frontend in Javascript. Currently for full sized browser only with plans to adapt it for mobile.
+                            <br />
+                            <a href="https://github.com/kgilbert78/cic-kyles-code/tree/main/Module-05/bestsellerList" target="_blank">See the current code on GitHub </a>
+                            
+                        </span>
+                    </div>
+                    <div class="mt-3">
+                        <a class="title" href="https://github.com/kgilbert78/kgilbert78.github.io" target="_blank">
+                            This Portfolio Website
+                        </a>
+                        <br />
+                        <span class="subtitle">
+                            Thank you to <a href="https://pixabay.com/no/users/bigtreevideo-20525568/ "target="_blank">bigtreevideo</a> for the background photo of the White Mountains of New Hampshire, where I grew up. Thank you to <a href="https://codepen.io/DZuz14/pen/jOPWLgz" target="_blank">Daniel Zuzevich</a> for the technique of superimposing responsive text over a full screen image that I based this on.
+                            <br />
+                            <a href="https://github.com/kgilbert78/kgilbert78.github.io" target="_blank">See the code on GitHub</a>
+                        </span>
+                    </div>
+                    <div class="mt-2" id="appendCloseX">
+                        <a data-bs-toggle="collapse" href="#collapseProjects">(close)</a>
+                    </div>
+                </div>
+            </div> `
+
+            collapsibleContent.innerHTML = contentToDisplay;
+
+        };
+
+        const showContact = () => {
+            contentToDisplay = `<div class="accordion-collapse collapse" id="collapseContact" data-bs-parent="#collapseWrapper">
+                <div class="dropdownDetails mx-4">
+                    <div class="text-end">
+                        <a data-bs-toggle="collapse" href="#collapseContact">Close [ X ]</a>
+                    </div>
+                    <div>
+                        <span class="subtitle">
+                            <a href="mailto:kyle@kylegilbert.dev" target="_blank">
+                                kyle@kylegilbert.dev
+                            </a>
+                        </span>
+                    </div>
+                    <div class="mt-3">
+                        <span class="subtitle">
+                            <a class="title" href="https://www.linkedin.com/in/kyle-gilbert-cny/" target="_blank">
+                                https://www.linkedin.com/in/kyle-gilbert-cny/
+                            </a>
+                        </span>
+                    </div>
+                    <div class="mt-3">
+                        <span class="subtitle">
+                            315-481-9763
+                        </span>
+                    </div>
+                </div>
+            </div>`
+
+            collapsibleContent.innerHTML = contentToDisplay;
+            
+        };
+
+    </script>
+
 </body>
+
 </html>
