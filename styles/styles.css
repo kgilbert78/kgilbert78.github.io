@@ -14,7 +14,7 @@ body {
 }
 
 #collapsibleContent {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(16, 20, 48, 0.25), rgba(16, 20, 48, 0.35), rgba(16, 20, 48, 0.35));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(16, 20, 48, 0.55), rgba(16, 20, 48, 0.5), rgba(16, 20, 48, 0.35));
 }
 
 @media (min-width: 576px) {
