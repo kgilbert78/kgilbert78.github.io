@@ -19,7 +19,18 @@ body {
 	position: relative;
 	background-size: cover;
 	background-position: 50% 50%;
-	background-image: url("road-6067666_1920.jpg");
+    background-image: url("road-6067666_1920.jpg");
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient()
+// https://www.w3schools.com/css/tryit.asp?filename=trycss3_gradient-linear_trans
+#collapsibleContent {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(16, 20, 48, .25), rgba(16, 20, 48, .35), rgba(16, 20, 48, .35));
+}
+@include media-breakpoint-up(sm) {
+    #collapsibleContent {
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0), rgba(16, 20, 48, .25), rgba(16, 20, 48, .35), rgba(0, 0, 0, 0));
+    }
 }
 
 .navbar {
