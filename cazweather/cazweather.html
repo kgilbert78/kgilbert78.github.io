@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caz Weather from API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="setTimeout(() => {moveCompass()}, 500);">
+    <!-- <h1>Caz Weather Data</h1> -->
+    <div class="cazWeather">
+        <div class="gridContainer">
+            <div id="tempDiv"></div>
+            <div id="windIconDiv">
+                <img src="315686_wind_icon.png" />
+                <div id="windSpdDiv"></div>
+            </div>  
+            
+            <div id="compassDiv">
+                <div id="compass">
+                    <img src="292487_direction_arrows_up arrow_up_icon.png" />
+                    
+                </div>
+                <div id="windDirDiv"></div>
+            </div>
+            
+          </div>
+    </div>
+    <div id="weatherlink"></div>
+
+    <script>
+        let compassDir;
+        const updateHTML = async () => {
+            const display = document.getElementById("weatherlink");
+            const tempDisplay = document.getElementById("tempDiv");
+            const windSpdDisplay = document.getElementById("windSpdDiv");
+            const windDirDisplay = document.getElementById("windDirDiv");
+
+            // const compassDir = document.getElementById("compass");
+            let dataToDisplay = "";
+            let tempToDisplay = "";
+            let windSpdToDisplay = "";
+            let windDirToDisplay = "";
+
+            const getWeatherlinkData = async () => {
+                const response = await fetch("https://walkumentary-syracuse-backend.herokuapp.com/weatherlink-data/");
+                const data = await response.json();
+                const weatherData = JSON.stringify(data, null, 2);
+                return weatherData;
+            };
+
+            const currentWeatherData = await getWeatherlinkData();
+            const weatherObj = JSON.parse(currentWeatherData);
+
+            const temp = weatherObj.weatherData.temp;
+            const humidity = weatherObj.weatherData.hum;
+            const windSpeed = weatherObj.weatherData.wind_speed_avg_last_10_min;
+            const windDirDegrees = weatherObj.weatherData.wind_dir_at_hi_speed_last_10_min;
+
+            // https://www7.ncdc.noaa.gov/climvis/help_wind.html
+            const getWindDirection = (degrees) => {
+                // N = North(349 - 011 degrees)
+                if (degrees >= 349 || degrees <= 11) {
+                    return "N"
+                }
+                // NNE = North - Northeast(012 - 033 degrees)
+                if (degrees >= 12 && degrees <= 33) {
+                    return "NNE"
+                }
+                // NE = Northeast(034 - 056 degrees)
+                if (degrees >= 34 && degrees <= 56) {
+                    return "NE"
+                }
+                // ENE = East - Northeast(057 - 078 degrees)
+                if (degrees >= 57 && degrees <= 78) {
+                    return "ENE"
+                }
+                // E = East(079 - 101 degrees)
+                if (degrees >= 79 && degrees <= 101) {
+                    return "E"
+                }
+                // ESE = East - Southeast(102 - 123 degrees)
+                if (degrees >= 102 && degrees <= 123) {
+                    return "ESE"
+                }
+                // SE = Southeast(124 - 146 degrees)
+                if (degrees >= 124 && degrees <= 146) {
+                    return "SE"
+                }
+                // SSE = South - Southeast(147 - 168 degrees)
+                if (degrees >= 147 && degrees <= 168) {
+                    return "SSE"
+                }
+                // S = South(169 - 191 degrees)
+                if (degrees >= 169 && degrees <= 191) {
+                    return "S"
+                }
+                // SSW = South - Southwest(192 - 213 degrees)
+                if (degrees >= 192 && degrees <= 213) {
+                    return "SSW"
+                }
+                // SW = Southwest(214 - 236 degrees)
+                if (degrees >= 214 && degrees <= 236) {
+                    return "SW"
+                }
+                // WSW = West - Southwest(237 - 258 degrees)
+                if (degrees >= 237 && degrees <= 258) {
+                    return "WSW"
+                }
+                // W = West(259 - 281 degrees)
+                if (degrees >= 259 && degrees <= 281) {
+                    return "W"
+                }
+                // WNW = West - Northwest(282 - 303 degrees)
+                if (degrees >= 282 && degrees <= 303) {
+                    return "WNW"
+                }
+                // NW = Northwest(304 - 326 degrees)
+                if (degrees >= 304 && degrees <= 326) {
+                    return "NW"
+                }
+                // NNW = North - Northwest(327 - 348 degrees)
+                if (degrees >= 327 && degrees <= 348) {
+                    return "NNW"
+                }
+            }
+
+            const windDir = getWindDirection(windDirDegrees)
+            compassDir = windDirDegrees;
+
+            weatherObj.weatherData.rain_storm_last_start_at = new Date(weatherObj.weatherData.rain_storm_last_start_at * 1000)
+            weatherObj.weatherData.rain_storm_last_end_at = new Date(weatherObj.weatherData.rain_storm_last_end_at * 1000)
+            weatherObj.weatherData.rain_storm_start_time = new Date(weatherObj.weatherData.rain_storm_start_time * 1000)
+
+            const formattedData = () => {
+                let prettyData = ``
+                let tableData = ``
+                for (let [key, value] of Object.entries(weatherObj.weatherData)) {
+                    let title = key.replace(/_/g, ' ');
+                    prettyData += `<li>${title}: ${value}</li>`
+                    tableData += `<tr>
+                                    <td>${title}:</td>
+                                    <td>${value}</td>
+                                </tr>`
+                }
+                // return(`<ul>${prettyData}</ul>`)
+                return (`<table style="width:100%">${tableData}<table>`)
+            }
+
+            tempToDisplay = `${temp}&#8457;`;
+            tempDisplay.innerHTML = tempToDisplay;
+
+            windSpdToDisplay += `<strong>${windSpeed.toFixed(1)}mph</strong>`;
+            windSpdDisplay.innerHTML = windSpdToDisplay;
+
+            windDirToDisplay = `<strong>${windDir}</strong>`;
+            windDirDisplay.innerHTML = windDirToDisplay;
+            
+            // display.innerHTML += formattedData()
+            // display.innerHTML = `<pre>${currentWeatherData}</pre>`;
+        }
+        updateHTML();
+        const moveCompass = () => {
+            document.getElementById('compass').style.transform = `rotate(${compassDir}deg)`
+            console.log(`Compass rotation: ${compassDir} degrees`)
+        }
+
+    </script>
+</body>
+
+</html>
+
+
+<!-- Hello World in random color each onload:
+
+<!DOCTYPE html>
+<html>
+<body onload="myFunction()">
+
+<h1 id="id1">Hello World!</h1>
+
+<script>
+function myFunction() {
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  let myInt = getRandomInt(3)
+  let myColors = ['red', 'green', 'blue', 'black']
+  document.getElementById('id1').style.color = myColors[myInt]
+}
+</script>
+
+</body>
+</html>
+
+ -->

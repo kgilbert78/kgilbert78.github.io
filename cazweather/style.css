@@ -1,0 +1,58 @@
+.cazWeather { /* dark blue background */
+    width: 300px;
+}
+
+.gridContainer { /* big container */
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    background-color: #1470AF;
+    border-radius: 10px;
+    padding: 8px; /* width of dark blue & space before light blue */
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.gridContainer > div { /* smaller light blue containers */
+background-color: #d1eaff;
+padding: 8px; /* width of light blue & space around words */
+border-radius: 5px;
+}
+
+#tempDiv { /* whole temp section */
+font-size: x-large;
+font-weight: bolder;
+padding-top: 25px;
+}
+
+#compassDiv { /* icon and wind dir acronym */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#compass {
+    position: absolute;
+}
+
+#compass > img { /* compass icon */
+    width: 30px;
+    height: 30px;
+    padding-top: 4px;
+}
+
+#windIconDiv > img { /* wind icon */
+    width: 40px;
+    height: 35px;
+}
+
+#windDirDiv { /* wind dir acronym only */
+    padding-top: 40px;
+}
+
+ /* wind speed number only, not incl. icon */
+/* #windSpdDiv {
+    padding-top: 5px;
+}  */
