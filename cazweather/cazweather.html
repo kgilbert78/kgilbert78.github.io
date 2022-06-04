@@ -10,7 +10,6 @@
 </head>
 
 <body onload="setTimeout(() => {moveCompass()}, 500);">
-    <!-- <h1>Caz Weather Data</h1> -->
     <div class="cazWeather">
         <div class="gridContainer">
             <div id="tempDiv"></div>
@@ -29,17 +28,14 @@
             
           </div>
     </div>
-    <div id="weatherlink"></div>
 
     <script>
         let compassDir;
         const updateHTML = async () => {
-            const display = document.getElementById("weatherlink");
             const tempDisplay = document.getElementById("tempDiv");
             const windSpdDisplay = document.getElementById("windSpdDiv");
             const windDirDisplay = document.getElementById("windDirDiv");
 
-            // const compassDir = document.getElementById("compass");
             let dataToDisplay = "";
             let tempToDisplay = "";
             let windSpdToDisplay = "";
@@ -60,7 +56,7 @@
             const windSpeed = weatherObj.weatherData.wind_speed_avg_last_10_min;
             const windDirDegrees = weatherObj.weatherData.wind_dir_at_hi_speed_last_10_min;
 
-            // https://www7.ncdc.noaa.gov/climvis/help_wind.html
+
             const getWindDirection = (degrees) => {
                 // N = North(349 - 011 degrees)
                 if (degrees >= 349 || degrees <= 11) {
@@ -135,21 +131,6 @@
             weatherObj.weatherData.rain_storm_last_end_at = new Date(weatherObj.weatherData.rain_storm_last_end_at * 1000)
             weatherObj.weatherData.rain_storm_start_time = new Date(weatherObj.weatherData.rain_storm_start_time * 1000)
 
-            const formattedData = () => {
-                let prettyData = ``
-                let tableData = ``
-                for (let [key, value] of Object.entries(weatherObj.weatherData)) {
-                    let title = key.replace(/_/g, ' ');
-                    prettyData += `<li>${title}: ${value}</li>`
-                    tableData += `<tr>
-                                    <td>${title}:</td>
-                                    <td>${value}</td>
-                                </tr>`
-                }
-                // return(`<ul>${prettyData}</ul>`)
-                return (`<table style="width:100%">${tableData}<table>`)
-            }
-
             tempToDisplay = `${temp}&#8457;`;
             tempDisplay.innerHTML = tempToDisplay;
 
@@ -158,9 +139,6 @@
 
             windDirToDisplay = `<strong>${windDir}</strong>`;
             windDirDisplay.innerHTML = windDirToDisplay;
-            
-            // display.innerHTML += formattedData()
-            // display.innerHTML = `<pre>${currentWeatherData}</pre>`;
         }
         updateHTML();
         const moveCompass = () => {
