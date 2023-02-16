@@ -94,6 +94,15 @@ body {
   float: left;
 }
 
+.flexinImageFormatting {
+  width: 100px;
+  height: 166;
+  border-radius: 15px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  float: left;
+}
+
 .overlay .subtitle p {
   font-size: 14px;
   font-weight: 500;

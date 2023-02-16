@@ -140,7 +140,7 @@
     const getReadingListFromDB = async () => {
         myReadingList = [];
         const displayUsername = document.getElementById("displayUsername");
-        
+
         const response = await fetch("https://bestseller-readinglist-backend.herokuapp.com/userreadinglist/", {
             method: "POST",
             headers: {
@@ -151,9 +151,9 @@
             body: JSON.stringify({ "userID": localStorage.userID })
         });
         const dbData = await response.json();
-        
+
         Object.assign(userInfo, dbData.currentUser);
-        
+
         dbData.booksToSend.map((readingListBook, index) => {
             const displayReadingList = {
                 bookID: readingListBook.book.bookID,
@@ -167,7 +167,7 @@
                 categoryDisplay: readingListBook.book.categoryName
             }
             myReadingList.push(displayReadingList)
-            
+
             updateReadingList();
         });
 
@@ -243,7 +243,7 @@
                     "accessCode": localStorage.accessCode
                 }
             });
-            
+
             getReadingListFromDB();
             updateReadingList(); // without this line for new users who logged in by creating an account the "removed" books don't disappear from browser until refresh (but for existing users who used login they do)
         };
@@ -273,6 +273,7 @@
         let booksIHaveReadHtmlToUpdate = "";
 
         myReadingList.map((dbArray) => {
+            console.log(dbArray)
             if (dbArray.didRead === false) {
                 booksToReadHtmlToUpdate += `
                     <li>
@@ -345,10 +346,10 @@
             }
 
         });
-       
+
         booksToReadList.innerHTML = booksToReadHtmlToUpdate;
         booksIHaveReadList.innerHTML = booksIHaveReadHtmlToUpdate;
-        
+
     };
 
 </script>

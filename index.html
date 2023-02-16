@@ -2,85 +2,85 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Kyle Gilbert</title>
+  <title>Kyle Gilbert</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/styles.css" />
 </head>
 
 <body>
-    
-    <div class="backgroundImage">
 
-        <div class="accordion" id="collapseWrapper">
+  <div class="backgroundImage">
 
-            <div class="navbar d-flex justify-content-between p-2">
+    <div class="accordion" id="collapseWrapper">
 
-                <div class="dropdown navLinks">
-                    <a data-bs-toggle="collapse" onmousedown="toggleContent(1)" href="#collapseAbout">
-                        { About }
-                    </a>
-                </div>
+      <div class="navbar d-flex justify-content-between p-2">
 
-                <div class="dropdown navLinks">
-                    <a data-bs-toggle="collapse" onmousedown="toggleContent(2)" href="#collapseProjects">
-                        { Projects }
-                    </a>
-                </div>
+        <div class="dropdown navLinks">
+          <a data-bs-toggle="collapse" onmousedown="toggleContent(1)" href="#collapseAbout">
+            { About }
+          </a>
+        </div>
 
-                <div class="dropdown navLinks">
-                    <a data-bs-toggle="collapse" onmousedown="toggleContent(3)" href="#collapseContact">
-                        { Contact }
-                    </a>
-                </div>
+        <div class="dropdown navLinks">
+          <a data-bs-toggle="collapse" onmousedown="toggleContent(2)" href="#collapseProjects">
+            { Projects }
+          </a>
+        </div>
 
-            </div>
+        <div class="dropdown navLinks">
+          <a data-bs-toggle="collapse" onmousedown="toggleContent(3)" href="#collapseContact">
+            { Contact }
+          </a>
+        </div>
 
-            <div class="overlay">
-                <h1>Kyle Gilbert</h1>
-                <p>Full Stack Web Developer</p>
+      </div>
 
-                <div id="collapsibleContent" class="scroll">
+      <div class="overlay">
+        <h1>Kyle Gilbert</h1>
+        <p>Full Stack Web Developer</p>
 
-                </div>
-
-            </div>
+        <div id="collapsibleContent" class="scroll">
 
         </div>
+
+      </div>
+
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-        </script>
-    <script>
-        const collapsibleContent = document.getElementById("collapsibleContent");
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+  <script>
+    const collapsibleContent = document.getElementById("collapsibleContent");
 
-        let contentToDisplay = "";
+    let contentToDisplay = "";
 
-        const toggleContent = (linkID) => {
-            contentToDisplay = "";
-            // load each section into the first accordion when it's being viewed so they all move in the same direction when they open, and so there's still movement when changing between sections that both use scroll
-            if (linkID === 1) {
-                showAbout();
-            } else if (linkID === 2) {
-                showProjects();
-            } else {
-                showContact();
-            }
-        };
+    const toggleContent = (linkID) => {
+      contentToDisplay = "";
+      // load each section into the first accordion when it's being viewed so they all move in the same direction when they open, and so there's still movement when changing between sections that both use scroll
+      if (linkID === 1) {
+        showAbout();
+      } else if (linkID === 2) {
+        showProjects();
+      } else {
+        showContact();
+      }
+    };
 
-        const showAbout = () => {
-            contentToDisplay = 
-                `<div class="accordion-collapse collapse" id="collapseAbout" data-bs-parent="#collapseWrapper">
+    const showAbout = () => {
+      contentToDisplay =
+        `<div class="accordion-collapse collapse" id="collapseAbout" data-bs-parent="#collapseWrapper">
                     <div class="dropdownDetails mx-4">
                         <div class="text-end">
                             <a data-bs-toggle="collapse" href="#collapseAbout">Close [ X ]</a>
@@ -89,16 +89,19 @@
                             <span class="subtitle">
                                 <p class="subtitle">
                                     <img class="headshotFormatting" src="kyleGilbert.jpg" />
-                                    I am a recent graduate of Hack Upstate’s <a href="https://careersincode.org/" target="_blank">Careers in Code</a>, where I learned full stack web development. Coding became a passion over the course of this intensive 6 month program. After years of saving the things I’m most enthusiastic about for my spare time, I am so excited to begin my new career and put my passion for coding to work!
+                                    I am an enthusiastic software developer and have been working in the field on diverse projects, including data visualization and QA test design and documentation, since my contract with <a href="https://www.density.io/" target="_blank">Density</a> launched me into the profession.
                                 </p>
                                 <p>
-                                    I like to understand things in depth, and I am a self motivated learner who will dig until I find solutions to a problem. I often view things from a different perspective than others. This has been an advantage in problem solving throughout my career as an office manager and in every job I have held. In coding I have noticed that I often see relationships or consequences that others don’t see. As a result I am able to anticipate a bug or see a more functional layout. I am also able to keep the end user’s point of view in mind.  I truly value the opportunity to ask questions in order to find the most appropriate solution. My favorite part of coding has been connecting with people over challenging problems and ways to solve them. I’ve never met a more welcoming, supportive, generous group of people than the tech community of Central NY. I feel so lucky to be a part of it.
+                                  My journey into software development began with 24 weeks of intensive training in full stack web development through Hack Upstate's <a href="https://careersincode.org/" target="_blank">Careers in Code</a> Bootcamp. This started me on what I envision as a career of continuous learning. In the past year I have become competent in Python, using Pandas and Plotly in Jupyter Notebooks, and expanded my Javascript skills with competence in Typescript. I am currently learning Django, Linux, and plan to expand my math skills with trigonometry.
                                 </p>
                                 <p>
-                                    I have an instinctive ability and proficiency in languages. My lifelong passion for language led me to a Linguistics degree. I am fascinated by word origins, the structure and function of language, the relationships between language, culture and history. I have studied French and German, and dabbled in a number of other languages. I continue to indulge these interests in my reading, and with the wealth of international movies and television shows now available online I am often drawn to apply my linguistic skills to decoding languages I don’t understand when watching. My long-term goal is a career that combines my background in linguistics with coding knowledge.
+                                  I like to understand things in depth, and I am a self motivated learner who will dig until I find solutions to a problem. I often view things from a different perspective than others. This has been an advantage in problem solving throughout my professional career. I have noticed that I often see details, relationships or consequences that others don't see. As a result I am able to anticipate a bug or see a more functional layout. I am also able to keep the end user's point of view in mind. I truly value the opportunity to ask questions in order to find the most appropriate solution. My favorite part of coding has been connecting with people over challenging problems and ways to solve them. I've never met a more welcoming, supportive, generous group of people than the tech community of Central NY. I feel so lucky to be a part of it.
                                 </p>
                                 <p>
-                                    I am also proud to be a part of ensuring the future health of Cazenovia Lake, having served the Cazenovia Lake Association in a professional capacity since 2008 and as a board member since March 2021. I am looking forward to using my new coding skills to play a broader role in the future of the Association’s work.
+                                    I have an instinctive ability and proficiency in languages. My lifelong passion for language led me to a Linguistics degree. I am fascinated by word origins, the structure and function of language, the relationships between language, culture and history. I have studied French and German, and dabbled in a number of other languages. I continue to indulge these interests in my reading, and with the wealth of international movies and television shows now available online I am often drawn to apply my linguistic skills to decoding languages I don't understand when watching. My long-term goal is a career that combines my background in linguistics with coding knowledge.
+                                </p>
+                                <p>
+                                    I am also proud to be a part of ensuring the future health of Cazenovia Lake, having served the <a href="https://www.cazlake.org/" target="_blank">Cazenovia Lake Association</a> in a professional capacity since 2008 and as a board member since March 2021. I am looking forward to using my coding skills to play a broader role in the future of the Association's work.
                                 </p>
                                 
                             </span>
@@ -109,16 +112,43 @@
                     </div>
                 </div>`
 
-            collapsibleContent.innerHTML = contentToDisplay;
+      collapsibleContent.innerHTML = contentToDisplay;
 
-        };
+    };
 
-        const showProjects = () => {
-            contentToDisplay = `<div class="accordion-collapse collapse" id="collapseProjects" data-bs-parent="#collapseWrapper">
+    const showProjects = () => {
+      contentToDisplay = `<div class="accordion-collapse collapse" id="collapseProjects" data-bs-parent="#collapseWrapper">
                 <div class="dropdownDetails mx-4">
                     <div class="closeWindow text-end">
                         <a data-bs-toggle="collapse" href="#collapseProjects">Close [ X ]</a>
                     </div>
+                    <div>
+                        <a href="https://github.com/myth-software/flexin-ipod-ad" target="_blank">
+                            Flexin Apple Ads
+                        </a>
+                        <br />
+                        <span class="subtitle">
+                            <em>Contract Project for <a href="https://myth.software/">Myth Software</a>, February 2023</em>
+                            <div class="container">
+                              <div class="row">
+                                <div class="col">
+                                  <p>
+                                    <a href="https://www.youtube.com/shorts/u8Oh8RCX4lQ"><img class="flexinImageFormatting" src="originalHandstand.png" /></a>
+                                    <a href="https://www.youtube.com/shorts/rQBnTdKtGtg"><img class="flexinImageFormatting" src="silhouetteHandstand.png" /></a>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            A project using MediaPipe's selfie segmentation and OpenCV on videos of handstands and calisthenics to create a silhouette of the athlete against a solid color background. This is for eventual integration with Myth Software's <a href="https://beta.flexin.io/">Flexin</a>, which gives athletes feedback on their physical form in these poses. Details of the tasks assigned to me can be found <a href="https://github.com/myth-software/flexin-ipod-ad/blob/main/README.md#overview">here</a>. The challenges I most enjoyed were divising a way to make the silhouette solid instead of showing the person's image, and divising a way to track and match frames to switch the background color at the time the user specified.
+                            <br />
+                            <a href="https://www.youtube.com/watch?v=u8Oh8RCX4lQ&list=PLrJAZORRkmWwG7A8renhsGqiVSzF4uxaq" target="_blank">See the videos on YouTube</a>
+                            &nbsp;|&nbsp;
+                            <a href="https://github.com/myth-software/flexin-ipod-ad" target="_blank">See the code on GitHub</a>
+                            <p>
+                        </span>
+                    </div>
+
+
                     <div>
                         <a href="https://walkumentary-syracuse-frontend.herokuapp.com" target="_blank">
                             Syracuse Walkumentary
@@ -151,7 +181,7 @@
                         </a>
                         <br />
                         <span class="subtitle">
-                            This week's New York Times Bestseller List with a reading list where users can save books and mark those they've read. Currently for full sized browser only with plans to adapt it for mobile. Try out a demo or create an account so the books will be saved for your next visit! This started as a weekend project to display data from the New York Times Bestseller List API and has grown as I learned more. I built the backend in in NodeJS with a Postgres SQL relational database. I built the frontend in Javascript.
+                            This week's New York Times Bestseller List with a reading list where users can save books and mark those they've read. Currently for full sized browser only with plans to adapt it for mobile. Try out a demo or create an account so the books will be saved for your next visit! This started as a weekend project to display data from the New York Times Bestseller List API and has grown as I learned more. I built the backend in in NodeJS with a Postgres SQL relational database. I built the frontend in vanilla JavaScript.
                             <br />
                             See the code on GitHub:&nbsp;
                             <a href="https://github.com/kgilbert78/kgilbert78.github.io/tree/main/bestsellers" target="_blank">
@@ -161,6 +191,8 @@
                             <a href="https://github.com/kgilbert78/bestseller-readinglist-backend" target="_blank">
                                 backend
                             </a>
+                            &nbsp;|&nbsp;
+                            <a href="https://github.com/kgilbert78/bestseller-readinglist-frontend">planned TypeScript / React / mobile-friendly version</a>
                         </span>
                     </div>
                     <div class="mt-3">
@@ -194,12 +226,12 @@
                 </div>
             </div> `
 
-            collapsibleContent.innerHTML = contentToDisplay;
+      collapsibleContent.innerHTML = contentToDisplay;
 
-        };
+    };
 
-        const showContact = () => {
-            contentToDisplay = `<div class="accordion-collapse collapse" id="collapseContact" data-bs-parent="#collapseWrapper">
+    const showContact = () => {
+      contentToDisplay = `<div class="accordion-collapse collapse" id="collapseContact" data-bs-parent="#collapseWrapper">
                 <div class="dropdownDetails mx-4">
                     <div class="text-end">
                         <a data-bs-toggle="collapse" href="#collapseContact">Close [ X ]</a>
@@ -226,11 +258,11 @@
                 </div>
             </div>`
 
-            collapsibleContent.innerHTML = contentToDisplay;
-            
-        };
+      collapsibleContent.innerHTML = contentToDisplay;
 
-    </script>
+    };
+
+  </script>
 
 </body>
 
