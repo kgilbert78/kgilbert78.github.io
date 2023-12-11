@@ -103,6 +103,19 @@ body {
   float: left;
 }
 
+.videoImageFormatting {
+  width: 80vw;
+  border-radius: 15px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  float: left;
+}
+
+@media (min-width: 576px) {
+  .videoImageFormatting {
+    width: 500px;
+  }
+}
 .overlay .subtitle p {
   font-size: 14px;
   font-weight: 500;
